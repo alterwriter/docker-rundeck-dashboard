@@ -25,7 +25,7 @@ This project sets up a fully automated Rundeck dashboard, integrated with Postgr
 To run Rundeck locally, clone the repository and use Docker Compose:
 
 ```bash
-git clone https://github.com/yourusername/docker-rundeck-dashboard.git
+git clone https://github.com/alterwriter/docker-rundeck-dashboard.git
 cd docker-rundeck-dashboard
 docker-compose -f local-docker-compose up -d --build
 ```
