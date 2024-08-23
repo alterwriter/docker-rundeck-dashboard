@@ -1,0 +1,38 @@
+version: '3'
+services:
+  rundeck:
+    container_name: rundeck
+    build:
+      context: ./compose/rundeck
+    environment:
+      RUNDECK_GRAILS_URL: ${RUNDECK_GRAILS_URL}
+      RUNDECK_DATABASE_DRIVER: ${RUNDECK_DATABASE_DRIVER}
+      RUNDECK_DATABASE_USERNAME: ${RUNDECK_DATABASE_USERNAME_PRODUCTION}
+      RUNDECK_DATABASE_PASSWORD: ${RUNDECK_DATABASE_PASSWORD_PRODUCTION}
+      RUNDECK_DATABASE_URL: ${RUNDECK_DATABASE_URL}
+      RUNDECK_SERVER_ADDRESS: ${RUNDECK_SERVER_ADDRESS}
+      RUNDECK_FEATURE_UINEXT_NAME: ${RUNDECK_FEATURE_UINEXT_NAME}
+      RUNDECK_FEATURE_UINEXT_ENABLED: ${RUNDECK_FEATURE_UINEXT_ENABLED}
+      RUNDECK_ADMIN_USERNAME: ${RUNDECK_ADMIN_USERNAME_PRODUCTION}
+      RUNDECK_ADMIN_PASSWORD: ${RUNDECK_ADMIN_PASSWORD_PRODUCTION}
+    ports:
+      - 4440:4440
+    volumes:
+      - rundeck_data:/home/rundeck/server/data
+      - rundeck_config:/home/rundeck/server/config
+
+  postgres:
+    image: postgres
+    expose:
+      - 5432
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER_PRODUCTION}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD_PRODUCTION}
+    volumes:
+      - dbdata:/var/lib/postgresql/data
+
+volumes:
+  dbdata:
+  rundeck_data:
+  rundeck_config:
