@@ -1,5 +1,7 @@
 # Rundeck Automation Dashboard with PostgreSQL Integration
 
+![rundeck-gh-image](https://github.com/user-attachments/assets/2ddc1f8f-1ef4-4191-b733-5fe2e572d118)
+
 ## Overview
 
 This project sets up a fully automated Rundeck dashboard, integrated with PostgreSQL, using Docker Compose. It supports both local development and production environments. The project includes predefined environment variables for seamless integration and easy deployment.
