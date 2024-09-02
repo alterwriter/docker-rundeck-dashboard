@@ -33,6 +33,6 @@ jobs:
     
     - name: Deployment process
       run: |
-        ssh -o StrictHostKeyChecking=no $USERNAME@$HOST << 'EOF'
+        ssh -o StrictHostKeyChecking=no ${{ USERNAME }}@${{ HOST }} << 'EOF'
           whoami
         EOF
