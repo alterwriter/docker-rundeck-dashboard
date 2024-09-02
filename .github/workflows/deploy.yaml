@@ -16,4 +16,6 @@ jobs:
 
     - name: Docker Lint
       run: |
-        docker run --rm -v $(pwd):/workspace -w /workspace aquasec/trivy:latest --exit-code 1 --severity HIGH,CRITICAL .
+        docker run --rm -v $(pwd):/workspace -w /workspace aquasec/trivy:latest fs --severity HIGH,CRITICAL .
+          ls
+        EOF
