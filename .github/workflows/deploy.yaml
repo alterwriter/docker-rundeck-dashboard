@@ -1,0 +1,19 @@
+
+name: Rundeck Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs: 
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
+    - name: Docker Lint
+      run: |
+        docker run --rm -v $(pwd):/workspace -w /workspace aquasec/trivy:latest --exit-code 1 --severity HIGH,CRITICAL .
