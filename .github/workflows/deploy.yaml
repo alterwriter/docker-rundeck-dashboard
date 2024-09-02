@@ -18,4 +18,3 @@ jobs:
       run: |
         docker run --rm -v $(pwd):/workspace -w /workspace aquasec/trivy:latest fs --severity HIGH,CRITICAL .
           ls
-        EOF
