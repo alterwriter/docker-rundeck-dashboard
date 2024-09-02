@@ -17,3 +17,22 @@ jobs:
     - name: Docker Lint
       run: |
         docker run --rm -v $(pwd):/workspace -w /workspace aquasec/trivy:latest fs .
+  
+  depoy:
+    runs-on: ubuntu-latest
+    needs: lint
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup SSH
+      uses: webfactory/ssh-agent@v0.8.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    
+    - name: Deployment process
+      run: |
+        ssh -o StrictHostKeyChecking=no operations@${{ secrets.SERVER_IP }} << 'EOF'
+          whoami
+        EOF
